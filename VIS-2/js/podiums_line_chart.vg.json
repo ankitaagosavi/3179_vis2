@@ -1,0 +1,55 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "config": {
+      "title": {
+        "fontSize": 15.5,  
+        "anchor": "middle", 
+        "offset": 15
+      },
+      "background": "WhiteSmoke",
+      "view": {"stroke": "transparent"},
+      "font": "Trebuchet MS"
+    },
+    "width": 200,
+    "height": 200,
+    "title": "Career F1 Grand Prix Podiums",
+    "data": {
+      "url": "https://raw.githubusercontent.com/ankitaagosavi/3179random/main/HamiltonSchumacherPodiumsData.csv"
+    },
+    "mark": {
+      "type": "line",
+      "interpolate": "monotone"
+    },
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "temporal",
+        "axis": {"format": "%Y"}
+      },
+      "y": {
+        "field": "Number of Podiums",
+        "type": "quantitative"
+      },
+      "color": {
+        "field": "Driver",
+        "type": "nominal",
+        "legend": null,
+        "scale": 
+            {
+              "domain": [
+                "Michael Schumacher",
+                "Lewis Hamilton"
+            ], 
+            "range": [
+                "#BB0202",
+                "#00A09C"
+            ]
+            } 
+      },
+      "tooltip": [ 
+        {"field": "Driver", "type": "nominal", "title": "Driver"},
+        {"field": "Year", "type": "temporal", "title": "Year", "format": "%Y"},
+        {"field": "Number of Podiums", "type": "quantitative", "title": "Podiums"}
+      ]
+    }
+  }

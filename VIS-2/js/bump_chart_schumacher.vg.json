@@ -1,0 +1,109 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "config": {
+      "title": {
+        "fontSize": 16,  
+        "anchor": "middle", 
+        "offset": 10
+      },
+      "background": "WhiteSmoke",
+      "view": {"stroke": "transparent"},
+      "font": "Trebuchet MS"
+  },
+    "title": "Schumacher's Position in the WDC Against Rivals",
+    "data": {
+      "url": "https://raw.githubusercontent.com/ankitaagosavi/3179random/main/Schumacher_bump_chart_v4.csv"
+    },
+    "width": 350,
+    "height": 200,
+    "layer": [
+      {
+        "mark": {"type": "line", "interpolate": "monotone"},
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "ordinal",
+            "axis": {
+              "title": "Year",
+              "labelAngle": 0,
+              "values": ["1991", "1993", "1995", "1997", "1999", "2001", "2003", "2005"]
+            }
+          },
+          "y": {
+            "field": "Position",
+            "type": "quantitative",
+            "axis": {
+              "title": "Position",
+              "tickCount": 10, 
+              "values": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+              "labelAngle": 0
+            },
+            "scale": {"reverse": true}
+          },
+          "color": {
+            "field": "Driver",
+            "type": "nominal",
+            "legend": null,
+            "scale": {
+              "domain": [
+                "Michael Schumacher",
+                "Mika Hakkinen",
+                "Fernando Alonso",
+                "Rubens Barrichello",
+                "Kimi Raikkonen",
+                "Damon Hill",
+                "David Coulthard",
+                "Jacques Villeneuve",
+                "Juan Pablo Montoya"
+              ],
+              "range": [
+                "#BB0202",
+                "#b55904",
+                "#fc8c03",
+                "#fcd303",
+                "#3ebbfa",
+                "#202af5",
+                "#601fb5",
+                "#db2ad5",
+                "#ed79b8"
+              ]
+            }
+          },
+          "opacity": {
+            "condition": {"test": "datum.Driver === 'Michael Schumacher'", "value": 1},
+            "value": 0.18
+          },
+          "tooltip": [
+            {"field": "Driver", "title": "Driver"},
+            {"field": "Year", "title": "Year"},
+            {"field": "Position", "title": "Championship Position"}
+          ]
+        }
+      },
+      {
+        "mark": "circle",
+        "encoding": {
+          "x": {"field": "time", "type": "ordinal"},
+          "y": {"field": "rank", "type": "quantitative", "scale": {"reverse": false}},
+          "color": {"field": "category", "type": "nominal"}
+        }
+      },
+      {
+        "mark": {"type": "point", "filled": true},
+        "encoding": {
+          "x": {"field": "Year", "type": "ordinal"},
+          "y": {"field": "Position", "type": "quantitative", "scale": {"reverse": true}},
+          "color": {"field": "Driver", "type": "nominal"},
+          "opacity": {
+            "condition": {"test": "datum.Driver === 'Michael Schumacher'", "value": 1},
+            "value": 0.2
+          },
+          "tooltip": [
+            {"field": "Driver", "title": "Driver"},
+            {"field": "Year", "title": "Year"},
+            {"field": "Position", "title": "Championship Position"}
+          ]
+        }
+      }
+    ]
+  }

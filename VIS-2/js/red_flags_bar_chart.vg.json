@@ -1,0 +1,31 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "config": {
+        "title": {
+          "fontSize": 16,  
+          "anchor": "middle", 
+          "offset": 10
+        },
+        "background": "WhiteSmoke",
+        "view": {"stroke": "transparent"},
+        "font": "Trebuchet MS"
+    },
+    "width": "container",
+    "height": 195,
+    "title": "Red Flags in F1 Grands Prix",
+    "data": {
+        "url": "https://raw.githubusercontent.com/ankitaagosavi/3179random/main/RedFlagsBarChartData.csv"
+    },
+    "mark": {
+        "type": "bar",
+        "color": "#b8060e"
+    },
+    "encoding": {
+        "x": { "field": "Reason", "type": "nominal"},
+        "y": { "field": "Number of Red Flags", "type": "quantitative"},
+        "tooltip": [
+            {"field": "Number of Red Flags", "type": "quantitative", "format": ","},
+            {"field": "Reason", "type": "nominal"}
+          ]
+    }
+}
