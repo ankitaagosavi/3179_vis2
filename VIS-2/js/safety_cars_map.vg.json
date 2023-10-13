@@ -1,18 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "params": [
-    {
-      "name": "SafetyCars_Above",
-      "value": 0,
-      "bind": {
-        "input": "range",
-        "min": 0,
-        "max": 28,
-        "step": 1,
-        "name": "Minimum Safety Cars: "
-      }
-    }
-  ],
   "config": {
     "title": {
       "fontSize": 16,  
@@ -25,9 +12,6 @@
   },
   "width": "container",
   "height": 300,
-  "transform": [
-    {"filter": "datum['safetyCars'] > SafetyCars_Above"}
-  ],
   "projection": {"type": "equalEarth"},
   "title": "Safety Cars at Formula 1 Grands Prix",
   "layer": [
